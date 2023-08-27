@@ -39,12 +39,14 @@ const UserForm = ({ open, setOpen }) => {
         token: user?.token,
         data: newData,
       });
+      
 
       if (res) {
         const newData = {token: res?.token, ...res?.user};
+        console.log(newData);
         dispatch(Login(newData));
         localStorage.setItem("userInfo", JSON.stringify(res));
-        window.location.reload();
+        window.location.reload(); 
       }
       setIsSubmitting(false);
     } catch (error) {
